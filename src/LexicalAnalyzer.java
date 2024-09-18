@@ -29,11 +29,13 @@ public class LexicalAnalyzer {
             String token = matcher.group();
 
             if (token.matches("\\(") ) {
-                tokens.add(new Lexema("(", token));
+                tokens.add(new Lexema("(", token));     
             } else if (token.matches("\\)") ) {
                 tokens.add(new Lexema(")", token));
             } else if (token.matches("\\+") ) {
                 tokens.add(new Lexema("+", token));
+            } else if (token.matches("\\*")) {
+                tokens.add(new Lexema("*", token));   
             } else if (token.matches("\\-")) {
                 tokens.add(new Lexema("-", token));
             } else if (token.matches("[0-9]+")) {

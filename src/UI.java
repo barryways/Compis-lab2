@@ -9,7 +9,7 @@ public class UI {
         SyntaxAnalyzer analizadorSintactico = new SyntaxAnalyzer();
 
         try {
-            System.out.println("Ingrese declaracion de variables: ");
+            System.out.println("Ingrese la operación aritmética: ");
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
             ArrayList<Lexema> tokens = analizadorLexico.getLexicalTokens(input);

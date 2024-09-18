@@ -17,23 +17,7 @@ public class SemanticAnalyzer {
         try {
             switch (operation) {
                 case "sum_e_and_t_save_value":
-                    
-                    //executeSum(operation, lexemas, (lexemas.get(4)).getSymbol());
-                    //Para el proceso de suma hay que sumar el valor que hay en la tabla hash correspondiente a E y a T pero hay que castearlos primero porque vienen en string
-
-                    // Valores de E y T de la tabla hash
-                    String valueEString = (String) symbolsTable.get("E").getValue();
-                    String valueTString = (String) symbolsTable.get("T").getValue();
-                    int valueEint = Integer.parseInt(valueEString);
-                    int valueTint = Integer.parseInt(valueTString);
-
-                    int sum = valueEint + valueTint;
-
-                    // Guardar el resultado de la suma en el símbolo E actualizando su valor
-                    symbolsTable.get("E").setValue(String.valueOf(sum));
-
-                    System.out.println("El nuevo valor de E después de sumar E y T es: " + sum);
-                    
+                    executeSum(operation, lexemas, (lexemas.get(0)).getSymbol());
                     break;
                 case "save_value_t_on_e":
                     String actualTValue = (String) symbolsTable.get("T").getValue();
@@ -43,19 +27,9 @@ public class SemanticAnalyzer {
                     System.out.println(valueE.getValue());
                     break;
                 case "mult_f_and_t_save_value":
-                    String value2EString = (String) symbolsTable.get("T").getValue();
-                    String value2TString = (String) symbolsTable.get("F").getValue();
-                    int value2E = Integer.parseInt(value2EString);
-                    int value2T = Integer.parseInt(value2TString);
-                
-                    int product = value2E * value2T;
-                
-                    // Guardar el resultado de la multiplicación en el símbolo E
-                    symbolsTable.get("T").setValue(String.valueOf(product));
-                
-                    System.out.println("El nuevo valor de E después de multiplicar E y T es: " + product);
-                    
+                    executeMult(operation, lexemas, (lexemas.get(0)).getSymbol());
                     break;
+                
                 case "save_value_f_on_t":
                     String actualFValue = (String) symbolsTable.get("F").getValue();
                     saveValueFonT(actualFValue);
@@ -89,9 +63,30 @@ public class SemanticAnalyzer {
 
 
     private void executeSum(String operation, ArrayList<GrammarSymbol> lexemas, String variableType) throws Exception{
+        // Valores de E y T de la tabla hash
+        String valueEString = (String) symbolsTable.get("E").getValue();
+        String valueTString = (String) symbolsTable.get("T").getValue();
+        int valueEint = Integer.parseInt(valueEString);
+        int valueTint = Integer.parseInt(valueTString);
 
+        int sum = valueEint + valueTint;
+
+        // Guardar el resultado de la suma en el símbolo E actualizando su valor
+        symbolsTable.get("E").setValue(String.valueOf(sum));
+
+        System.out.println("El nuevo valor de E después de sumar E y T es: " + sum);
     }
     private void executeMult(String operation, ArrayList<GrammarSymbol> lexemas, String variableType) throws Exception{
+        String valueFString = (String) symbolsTable.get("F").getValue();
+        String valueTString = (String) symbolsTable.get("T").getValue();
+        int valueFint = Integer.parseInt(valueFString);
+        int valueTint = Integer.parseInt(valueTString);
+
+        int product = valueFint * valueTint;
+
+        symbolsTable.get("T").setValue(String.valueOf(product));
+
+        System.out.println("El nuevo valor de T después de multiplicar F y T es: " + product);
 
     }
     private void saveValueTonE( String TValue) throws Exception{
