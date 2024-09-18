@@ -33,6 +33,9 @@ public class SyntaxAnalyzer {
         productions.get(5).getActions().add("save_value_e_on_f");
         productions.put(6, new Production("<F>", "num"));
         productions.get(6).getActions().add("save_value_num_on_f");
+        //productions.put(7, new Production("<E>", "<E>", "*", "<T>"));
+        //productions.get(7).getActions().add("mult_e_and_t_save_value");
+
     }
 
     private void createParsingTable(){

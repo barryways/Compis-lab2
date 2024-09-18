@@ -43,7 +43,18 @@ public class SemanticAnalyzer {
                     System.out.println(valueE.getValue());
                     break;
                 case "mult_f_and_t_save_value":
-                    executeMult(operation, lexemas, (lexemas.get(0)).getSymbol());
+                    String value2EString = (String) symbolsTable.get("T").getValue();
+                    String value2TString = (String) symbolsTable.get("F").getValue();
+                    int value2E = Integer.parseInt(value2EString);
+                    int value2T = Integer.parseInt(value2TString);
+                
+                    int product = value2E * value2T;
+                
+                    // Guardar el resultado de la multiplicación en el símbolo E
+                    symbolsTable.get("T").setValue(String.valueOf(product));
+                
+                    System.out.println("El nuevo valor de E después de multiplicar E y T es: " + product);
+                    
                     break;
                 case "save_value_f_on_t":
                     String actualFValue = (String) symbolsTable.get("F").getValue();
