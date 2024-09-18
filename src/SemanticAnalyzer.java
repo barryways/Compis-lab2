@@ -17,8 +17,23 @@ public class SemanticAnalyzer {
         try {
             switch (operation) {
                 case "sum_e_and_t_save_value":
-                    executeSum(operation, lexemas, (lexemas.get(4)).getSymbol());
+                    
+                    //executeSum(operation, lexemas, (lexemas.get(4)).getSymbol());
                     //Para el proceso de suma hay que sumar el valor que hay en la tabla hash correspondiente a E y a T pero hay que castearlos primero porque vienen en string
+
+                    // Valores de E y T de la tabla hash
+                    String valueEString = (String) symbolsTable.get("E").getValue();
+                    String valueTString = (String) symbolsTable.get("T").getValue();
+                    int valueEint = Integer.parseInt(valueEString);
+                    int valueTint = Integer.parseInt(valueTString);
+
+                    int sum = valueEint + valueTint;
+
+                    // Guardar el resultado de la suma en el símbolo E actualizando su valor
+                    symbolsTable.get("E").setValue(String.valueOf(sum));
+
+                    System.out.println("El nuevo valor de E después de sumar E y T es: " + sum);
+                    
                     break;
                 case "save_value_t_on_e":
                     String actualTValue = (String) symbolsTable.get("T").getValue();
